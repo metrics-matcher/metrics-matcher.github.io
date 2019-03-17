@@ -5,14 +5,16 @@ layout: index
 # Metrics matcher
 
 Metrics matcher is a data matching tool.
+
 ![Screenshot](/assets/screenshot.png)
 
 TODO more description here
 
 ## Releases
 
-These versions of the application were released and can be downloaded:
-[-] 2019-03-7 [v1.0.1](/releases/metrics-matcher-1.0.1.zip)
+These versions of the application were released and available for downloading:
+
+- 2019-03-17 **v1.0.1** [metrics-matcher-1.0.1.zip](/releases/metrics-matcher-1.0.1.zip)
 
 ## User interface
 - TODO screenshot
