@@ -5,9 +5,14 @@ layout: index
 # Metrics matcher
 
 Metrics matcher is a data matching tool.
+![Screenshot](/assets/screenshot.png)
+
+TODO more description here
 
 ## Releases
-TODO
+
+These versions of the application were released and can be downloaded:
+[-] 2019-03-7 [v1.0.1](/releases/metrics-matcher-1.0.1.zip)
 
 ## User interface
 - TODO screenshot
@@ -28,6 +33,8 @@ TODO
 
 
 ### Drivers
+
+Application supports all databases having JDBC interface.
 
 - TODO what is driver, jdbc jar
 - TODO drivers location

@@ -1,3 +1,3 @@
 # Metrics matcher
 
-[See documentation](https://metrics-matcher.github.io)
+See [application documentation](https://metrics-matcher.github.io)
