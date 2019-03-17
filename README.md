@@ -1,6 +1,13 @@
+---
+layout: index
+---
+
 # Metrics matcher
 
-- TODO about the program
+Metrics matcher is a data matching tool.
+
+## Releases
+TODO
 
 ## User interface
 - TODO screenshot
