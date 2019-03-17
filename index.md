@@ -4,6 +4,7 @@ layout: index
 
 # Metrics matcher
 
+## About
 Metrics matcher is a data matching tool.
 
 ![Screenshot](/assets/screenshot.png)
@@ -14,7 +15,7 @@ TODO more description here
 
 These versions of the application were released and available for downloading:
 
-- 2019-03-17 **v1.0.1** [metrics-matcher-1.0.1.zip](/releases/metrics-matcher-1.0.1.zip)
+- **v1.0.1** (2019-03-17) [metrics-matcher-1.0.1.zip](/releases/metrics-matcher-1.0.1.zip)
 
 ## User interface
 - TODO screenshot
