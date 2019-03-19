@@ -28,22 +28,56 @@ These versions of the application were released and available for downloading:
 
 ### Data sources
 
-- TODO what is datasource
-- TODO list of datasources
-- TODO datasource sample JSON
-- TODO JDBC ULR samples
-- TODO "optional timeout"
+Data source is a set of connection parameters to your database.
+You can define multiple data sources, but only one at a time can be selected as an active in the application.
+
+In theory, the application supports any databases that have JDBC interface.
+Like: PostgreSQL, MySQL, MariaDB, Oracle, H2, etc.
+You just need to provide the appropriate driver (see [Drivers](#drivers) section).
+
+Data sources are defined in the `configs/datasources.json` file.
+```json
+[
+  {
+    "name": "My H2",
+    "url": "jdbc:h2:mem:dev",
+    "username": "me",
+    "password": "passwd"
+  },
+  {
+    "name": "My Oracle",
+    "url": "jdbc:oracle:thin:@//myhost:1521/orcl",
+    "username": "me",
+    "password": "passwd",
+    "timeout": 300
+  }
+]
+```
+
+Optional connection timeout parameter can be specified in seconds (300 seconds by default).
 
 
 ### Drivers
 
 Application supports all databases having JDBC interface.
 
-- TODO what is driver, jdbc jar
-- TODO drivers location
-- TODO how driver related to datasoure URL 
-- TODO mysql, postgres, h2, oracle, 
+Driver is a jar file with JDBC interface implementation to specific database.
 
+- [H2](http://www.h2database.com/html/download.html) 
+- [MySQL](https://dev.mysql.com/downloads/connector/j)
+- [Oracle](https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html)
+- [PostgreSQL](https://jdbc.postgresql.org/download.html)
+
+Drivers samples:
+
+| Database   | JDBC JAR                        | JDBC URL               |
+|------------|---------------------------------|------------------------|
+| H2         | h2-1.4.199.jar                  | jdbc:h2:/data/test     |
+| MySQL      | mysql-connector-java-8.0.15.jar | TODO                   |
+| Oracle     | ojdbc8.jar                      | TODO                   |
+| PostgreSQL | postgresql-42.2.5.jar           | TODO                   |
+  
+Drivers should be placed into `drivers` directory to be available in the app.
 
 ### Queries
 
@@ -70,17 +104,6 @@ Application supports all databases having JDBC interface.
 
 ## TODO backlog
 ### Data sources
-Data source (or multiple data sources) can be defined in the `datasources.json` file.
-
-Sample file:
-```json
-
-```
-
-Default connection parameters are:
-- `type`: "JDBC"
-- `timeout`: 300 seconds
-- `driver`: ?
 
 ### Query files
 
