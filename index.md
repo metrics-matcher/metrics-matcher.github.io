@@ -5,17 +5,23 @@ layout: index
 # Metrics matcher
 
 ## About
-Metrics matcher is a data matching tool.
+Metrics matcher is a data testing tool.
 
-![Screenshot](/assets/screenshot.png)
+It executes SQL queries against your data in a batch, 
+compares expected and actual results and highlights mismatches and errors.
 
-TODO more description here
+This is similar to running test suites with test cases with assertions, but for databases.
+
+![Metrics matcher screenshot](/assets/screenshot.png)
+
+Metrics matcher is a desktop Java-based application. It requires Java 8 to be installed.
 
 ## Releases
 
 These versions of the application were released and available for downloading:
 
 - **v1.0.1** (2019-03-17) [metrics-matcher-1.0.1.zip](/releases/metrics-matcher-1.0.1.zip)
+    - Initial implementation
 
 ## User interface
 - TODO screenshot
@@ -35,7 +41,10 @@ In theory, the application supports any databases that have JDBC interface.
 Like: PostgreSQL, MySQL, MariaDB, Oracle, H2, etc.
 You just need to provide the appropriate driver (see [Drivers](#drivers) section).
 
-Data sources are defined in the `configs/datasources.json` file.
+Data sources are defined in the ***configs/datasources.json*** file.
+
+Sample file:
+
 ```json
 [
   {
@@ -49,42 +58,50 @@ Data sources are defined in the `configs/datasources.json` file.
     "url": "jdbc:oracle:thin:@//myhost:1521/orcl",
     "username": "me",
     "password": "passwd",
-    "timeout": 300
+    "timeout": 60
   }
 ]
 ```
 
 Optional connection timeout parameter can be specified in seconds (300 seconds by default).
 
+Application establishes connection in **READ-ONLY** mode.
+So, the app does not allow queries to modify data in the database.
 
 ### Drivers
 
-Application supports all databases having JDBC interface.
+Application interacts with databases via JDBC interface using JDBC driver.
 
-Driver is a jar file with JDBC interface implementation to specific database.
+Typically, JDBC driver is a Java library packed into the ***.jar*** file
+and supplied by the database vendor.
 
-- [H2](http://www.h2database.com/html/download.html) 
-- [MySQL](https://dev.mysql.com/downloads/connector/j)
+
+- [H2](https://mvnrepository.com/artifact/com.h2database/h2/1.4.199) 
+- [Microsoft SQL Server](https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc/7.2.1.jre8)
+- [MySQL](https://mvnrepository.com/artifact/mysql/mysql-connector-java/8.0.15)
 - [Oracle](https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html)
-- [PostgreSQL](https://jdbc.postgresql.org/download.html)
+- [PostgreSQL](https://mvnrepository.com/artifact/org.postgresql/postgresql/42.2.5)
 
-Drivers samples:
+Here is a list of well-known JDBC drivers:
 
-| Database   | JDBC JAR                        | JDBC URL               |
-|------------|---------------------------------|------------------------|
-| H2         | h2-1.4.199.jar                  | jdbc:h2:/data/test     |
-| MySQL      | mysql-connector-java-8.0.15.jar | TODO                   |
-| Oracle     | ojdbc8.jar                      | TODO                   |
-| PostgreSQL | postgresql-42.2.5.jar           | TODO                   |
+| Database             | JDBC JAR                        | JDBC URL Template                           |
+|----------------------|---------------------------------|---------------------------------------------|
+| H2                   | h2-1.4.199.jar                  | See [Database URLs](http://www.h2database.com/html/features.html) |
+| Microsoft SQL Server | mssql-jdbc-7.2.1.jre8.jar       | jdbc:sqlserver://HOST;DatabaseName=DATABASE |
+| MySQL                | mysql-connector-java-8.0.15.jar | jdbc:mysql://HOST/DATABASE                  |
+| Oracle               | ojdbc8.jar                      | TODO                   |
+| PostgreSQL           | postgresql-42.2.5.jar           | jdbc:postgresql://HOST/DATABASE             |
   
-Drivers should be placed into `drivers` directory to be available in the app.
+Drivers should be placed into ***drivers*** directory to be available in the app.
+You can put the drivers you need.
+The application most likely should work with any database.
 
 ### Queries
 
 - TODO queries directory, queries file
 - TODO name, naming convention
 - TODO valid SQL
-- TODO vaiables
+- TODO variables
 
 ### Metrics profiles
 
@@ -103,7 +120,6 @@ Drivers should be placed into `drivers` directory to be available in the app.
 
 
 ## TODO backlog
-### Data sources
 
 ### Query files
 
@@ -158,5 +174,5 @@ todo naming convention
 
 todo inform about readonly sessions
 todo status bar connection status
-todo status bar selected datasource  
+todo status bar selected datasource
 todo status bar selected profile
