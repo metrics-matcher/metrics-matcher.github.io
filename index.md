@@ -12,9 +12,9 @@ compares expected and actual results and highlights mismatches and errors.
 
 This is similar to running test suites with test cases with assertions, but for databases.
 
-![Metrics matcher screenshot](/assets/screenshot.png)
+![Metrics matcher screenshot](/images/screenshot.png)
 
-Metrics matcher is a desktop Java-based application. It requires Java 8 to be installed.
+Metrics matcher is a Java-based desktop application. It requires **Java 8** to be installed.
 
 ## Releases
 
