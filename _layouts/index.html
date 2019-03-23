@@ -55,19 +55,19 @@
 
         @media screen and (min-width: 1000px) {
             body {
-                width: 90%;
+                width: 75%;
             }
         }
 
         @media screen and (min-width: 1500px) {
             body {
-                width: 80%;
+                width: 50%;
             }
         }
 
         @media screen and (min-width: 2000px) {
             body {
-                width: 70%;
+                width: 35%;
             }
         }
 
@@ -89,6 +89,7 @@
         }
 
         h1, h2, h3 {
+            font-weight: normal;
             margin: 2rem 0 1rem 0;
         }
 
@@ -120,6 +121,10 @@
             width: 100%;
         }
 
+        img {
+            max-width: 100%;
+        }
+
         .debug {
             border: dashed red 1px;
         }
@@ -146,6 +151,7 @@
 </script>
 
 <!-- Yandex.Metrika counter -->
+<!--
 <script type="text/javascript"> (function (m, e, t, r, i, k, a) {
     m[i] = m[i] || function () {
         (m[i].a = m[i].a || []).push(arguments)
@@ -157,9 +163,36 @@ ym(52895374, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: tru
 <noscript>
     <div><img src="https://mc.yandex.ru/watch/52895374" style="position:absolute; left:-9999px;" alt=""/></div>
 </noscript>
+-->
 <!-- /Yandex.Metrika counter -->
 
 <body>
+<style>
+    header {
+        background-image: url("/images/mushrooms.png");
+        background-position-x: right;
+        background-repeat: no-repeat;
+        height: 128px;
+    }
+
+    header h1 {
+        font-size: 3rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    header #mm {
+        font-size: 2rem;
+        margin-left: 10rem;
+        color: #808080;
+    }
+
+</style>
+
+<header>
+    <h1 style="">Metrics matcher</h1>
+    <div id="mm">Magic mushrooms</div>
+</header>
 
 <section id="content">
     {{ content }}
