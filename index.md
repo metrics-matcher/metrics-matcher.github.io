@@ -104,13 +104,16 @@ Here is a list of well-known JDBC drivers:
 
 Drivers should be placed into ***drivers*** directory to be available in the app.
 You can put the drivers you need.
+
 The application most likely should work with any database.
 
 ### Queries
 
 Application works with small portions of data extracted from the database using SQL queries.
-The main idea: **each query should return only a single value in a single row**.
+
+**Each query should return only a single value in a single row**.
 In most cases it is a counter or result of aggregation function.
+
 Empty result or result set of multiple rows will be treated  as an error.
 
 SQL can be simple like:
@@ -135,6 +138,33 @@ One query per file.
 
 
 ### Metrics profiles
+
+```json
+[
+  {
+    "name": "Users summary",
+    "metrics": {
+      "total-count-of-users": 125,
+      "avg-user-age": 35.5,
+      "last-registration-date": "2019-02-28",
+      "last-event-timestamp": "2019-03-23 15:25:59",
+      "most-popular-user": "Leo"
+    }
+  },
+  {
+    "name": "Diablo gamers",
+    "metrics": {
+      "count-of-users": 55
+    },
+    "params": {
+      "groupName": "diablo"
+    }
+  }
+]
+
+```
+
+Metrics profiles are defined in the ***metrics-profiles.json*** file.
 
 - TODO about metrics
 - TODO JSON sample
