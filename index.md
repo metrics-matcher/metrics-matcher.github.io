@@ -2,8 +2,6 @@
 layout: index
 ---
 
-# Metrics matcher
-
 ## About
 Metrics matcher is a data testing tool.
 
