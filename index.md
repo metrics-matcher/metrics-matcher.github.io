@@ -180,8 +180,7 @@ Queries can be parameterized.
 
 For example, if out have a query like:
 
-```sql
--- Count of gamers in the "${groupName}" group 
+```sql 
 SELECT COUNT(1) FROM users WHERE user_group = '${groupName}'
 ```
 
@@ -214,7 +213,7 @@ For the first profile query will be formed as:
 ```sql
 SELECT COUNT(1) FROM users WHERE user_group = 'diablo'
 ```
-and for the second:
+and for the second as:
 ```sql
 SELECT COUNT(1) FROM users WHERE user_group = 'minecraft'
 ```
@@ -226,3 +225,6 @@ SELECT COUNT(1) FROM users WHERE user_group = 'minecraft'
 - TODO variables mapping
 - TODO screenshot, highlight menu, statusbar
 
+## SQL tips and tricks
+
+TODO
