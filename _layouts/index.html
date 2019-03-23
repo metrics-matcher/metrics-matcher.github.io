@@ -43,31 +43,15 @@
             margin: 0;
             padding: 0;
             outline: none;
+            color: #111;
         }
 
         body {
             width: auto;
+            max-width: 60rem;
             font-size: 1rem;
             margin: 0 auto;
             padding: 1rem;
-        }
-
-        @media screen and (min-width: 1000px) {
-            body {
-                width: 75%;
-            }
-        }
-
-        @media screen and (min-width: 1500px) {
-            body {
-                width: 50%;
-            }
-        }
-
-        @media screen and (min-width: 2000px) {
-            body {
-                width: 35%;
-            }
         }
 
         footer {
@@ -76,19 +60,20 @@
         }
 
         h1 {
-            font-size: 2rem;
+            font-size: 3rem;
         }
 
         h2 {
-            font-size: 1.5rem;
+            font-size: 2rem;
         }
 
         h3 {
-            font-size: 1.25rem;
+            font-size: 1.5rem;
         }
 
         h1, h2, h3 {
             font-weight: normal;
+            color: black;
             margin: 2rem 0 1rem 0;
         }
 
@@ -118,6 +103,24 @@
 
         #content {
             width: 100%;
+        }
+
+        header {
+            background-image: url("/images/mushrooms.png");
+            background-position-x: right;
+            background-repeat: no-repeat;
+            height: 128px;
+        }
+
+        header h1 {
+            padding: 0;
+            margin: 0;
+        }
+
+        header #mm {
+            font-size: 2rem;
+            margin-left: 10rem;
+            color: #808080;
         }
 
         img {
@@ -166,27 +169,6 @@ ym(52895374, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: tru
 <!-- /Yandex.Metrika counter -->
 
 <body>
-<style>
-    header {
-        background-image: url("/images/mushrooms.png");
-        background-position-x: right;
-        background-repeat: no-repeat;
-        height: 128px;
-    }
-
-    header h1 {
-        font-size: 3rem;
-        padding: 0;
-        margin: 0;
-    }
-
-    header #mm {
-        font-size: 2rem;
-        margin-left: 10rem;
-        color: #808080;
-    }
-
-</style>
 
 <header>
     <h1 style="">Metrics matcher</h1>
@@ -195,6 +177,7 @@ ym(52895374, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: tru
 
 <section id="content">
     {{ content }}
+    <!--<img alt="Mushrooms" src="../images/screenshot.png">-->
 </section>
 
 <footer>

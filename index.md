@@ -90,7 +90,7 @@ like these:
 - [Oracle](https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html)
 - [PostgreSQL](https://mvnrepository.com/artifact/org.postgresql/postgresql/42.2.5)
 
-Binary is available in the **Files** row in the table at the driver page.
+Binary is available at the driver's page in the **Files** section.
 
 Here is a list of well-known JDBC drivers:
 
@@ -108,12 +108,10 @@ The application most likely should work with any database.
 
 ### Queries
 
-Application need your help to understand how to check your data.
-
-TODO
-***queries*** directory
-
-Each query should return only a single metrics: single value in a single row
+Application works with small portions of data extracted from the database using SQL queries.
+The main idea: **each query should return only a single value in a single row**.
+In most cases it is a counter or result of aggregation function.
+Empty result or result set of multiple rows will be treated  as an error.
 
 SQL can be simple like:
 ```sql
@@ -121,7 +119,7 @@ SQL can be simple like:
 SELECT COUNT(1) FROM users
 ```
 
-Or, you can use parameters:
+You can also use parameters:
 ```sql
 -- Max age in the group ${groupName}
 SELECT MAX(user_age)
@@ -130,11 +128,10 @@ WHERE user_group = '${groupName}'
 ```
 
 Query may have optional comment (started with `--`) on the first line.
-
 In the runtime such parameters will be substituted with values specified in the Metrics Profiles.
 
-- TODO queries directory, queries file
-- TODO name, naming convention
+Files with SQL queries should be placed into the ***queries*** directory.
+One query per file.
 
 
 ### Metrics profiles
