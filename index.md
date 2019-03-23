@@ -111,7 +111,8 @@ The application most likely should work with any database.
 
 Application works with small portions of data extracted from the database using SQL queries.
 
-**Each query should return only a single value in a single row**.
+**Each query should return metrics - a single value in a single row**.
+
 In most cases it is a counter or result of aggregation function.
 
 Empty result or result set of multiple rows will be treated  as an error.
@@ -139,16 +140,20 @@ One query per file.
 
 ### Metrics profiles
 
+Metrics profile is a way to link queries with expected results and organize them into groups. 
+
+Metrics profiles can be defined in ***metrics-profiles.json***, like this:
+
 ```json
 [
   {
-    "name": "Users summary",
+    "name": "Portal users",
     "metrics": {
       "total-count-of-users": 125,
-      "avg-user-age": 35.5,
+      "average-user-age": 35.5,
       "last-registration-date": "2019-02-28",
       "last-event-timestamp": "2019-03-23 15:25:59",
-      "most-popular-user": "Leo"
+      "most-popular-user": "Neo"
     }
   },
   {
@@ -161,16 +166,58 @@ One query per file.
     }
   }
 ]
-
 ```
 
-Metrics profiles are defined in the ***metrics-profiles.json*** file.
+Here `metrics` is a map of query ids and expected results.
 
-- TODO about metrics
-- TODO JSON sample
-- TODO naming convention
-- TODO params, variables substitution
+Imagine you have a file ***queries/total-count-of-users.sql***.
 
+Then `total-count-of-users` (without `.sql`) is  a **Query Id**.
+
+And you expect that this query should return 123 users.
+
+Queries can be parameterized.
+
+For example, if out have a query like:
+
+```sql
+-- Count of gamers in the "${groupName}" group 
+SELECT COUNT(1) FROM users WHERE user_group = '${groupName}'
+```
+
+Then you can use the same query in different profiles:
+
+```json
+[
+  {
+    "name": "Diablo gamers",
+    "metrics": {
+      "count-of-users": 55
+    },
+    "params": {
+      "groupName": "diablo"
+    }
+  },
+  {
+    "name": "Minecraft gamers",
+    "metrics": {
+      "count-of-users": 10
+    },
+    "params": {
+      "groupName": "minecraft"
+    }
+  }
+]
+```
+
+For the first profile query will be formed as:
+```sql
+SELECT COUNT(1) FROM users WHERE user_group = 'diablo'
+```
+and for the second:
+```sql
+SELECT COUNT(1) FROM users WHERE user_group = 'minecraft'
+```
 
 ## Naming convention
 
@@ -178,3 +225,4 @@ Metrics profiles are defined in the ***metrics-profiles.json*** file.
 - TODO query file name, id (without sql), query title
 - TODO variables mapping
 - TODO screenshot, highlight menu, statusbar
+
