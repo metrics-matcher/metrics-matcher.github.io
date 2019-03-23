@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <title>Metrics matcher</title>
     <meta name="keywords" content="metrics, matcher">
-    
+
     <meta name="description" content="Data matching tool">
-    
+
     <meta name="author" content="Xantorohara">
     <meta name="application-name" content="Metrics matcher">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -47,10 +47,28 @@
         }
 
         body {
-            width: 60rem;
+            width: auto;
             font-size: 1rem;
             margin: 0 auto;
             padding: 1rem;
+        }
+
+        @media screen and (min-width: 1000px) {
+            body {
+                width: 90%;
+            }
+        }
+
+        @media screen and (min-width: 1500px) {
+            body {
+                width: 80%;
+            }
+        }
+
+        @media screen and (min-width: 2000px) {
+            body {
+                width: 70%;
+            }
         }
 
         footer {
@@ -96,6 +114,10 @@
             box-sizing: border-box;
             border-spacing: 0;
             border: solid 1px #cccccc;
+        }
+
+        #content {
+            width: 100%;
         }
 
         .debug {
