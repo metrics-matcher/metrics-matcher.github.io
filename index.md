@@ -23,7 +23,7 @@ In order to start using of the application your need to:
 
 1. Download and unpack the latest version (see [Releases](#releases))
 2. Configure database connections (see [Data sources](#data-sources))
-3. Download JDBC driver for your database (see [Drivers](#drivers))
+3. Download JDBC driver for your database if need (see [Drivers](#drivers))
 4. Write your SQL queries (see [Queries](#queries))
 5. Link data sources, SQL queries and expected results (see [Metrics profiles](#metrics-profiles))
 6. Run it
@@ -33,8 +33,26 @@ In order to start using of the application your need to:
 
 These versions of the application were released and available for downloading:
 
+- **v1.0.2** (2019-03-24) 
+[demo zip](/releases/metrics-matcher-1.0.2-demo.zip)
+[mini zip](/releases/metrics-matcher-1.0.2-mini.zip)
+[oracle zip](/releases/metrics-matcher-1.0.2-oracle.zip)
+  - Separate app builds
+  - Optimized app size
+
 - **v1.0.1** (2019-03-17) [metrics-matcher-1.0.1.zip](/releases/metrics-matcher-1.0.1.zip)
   - Initial implementation
+  
+Since v1.0.2 build procedure produces different variants of the app.
+
+Latest release contains these:
+
+- **demo** - includes H2 driver, different types of SQL queries and profiles to demonstrate how it works
+- **mini** - minimal without drivers and configs
+- **oracle** - includes Oracle driver, data source template for Oracle database and dummy metrics profile   
+
+Full list of downloadable files is available at 
+[Releases](https://github.com/metrics-matcher/metrics-matcher.github.io/tree/master/releases)
 
 ## Configuration
 
@@ -220,6 +238,8 @@ SELECT COUNT(1) FROM users WHERE user_group = 'minecraft'
 
 ## Naming convention
 
+Application follows pretty simple naming convention between file names, metrics and...
+ 
 - TODO datasource name
 - TODO query file name, id (without sql), query title
 - TODO variables mapping
