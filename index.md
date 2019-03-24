@@ -130,7 +130,7 @@ The application most likely should work with any database.
 
 Application works with small portions of data extracted from the database using SQL queries.
 
-**Each query should return metrics - it is a single value in a single row**.
+Each query should return a **metrics** - it is a **single value** in a **single row**.
 
 In most cases it is a counter or result of aggregation function.
 
