@@ -34,11 +34,11 @@ In order to start using of the application your need to:
 These versions of the application were released and now available for downloading:
 
 - **v1.0.2** (2019-03-24) 
-  - [metrics-matcher-1.0.2-demo.zip](/releases/metrics-matcher-1.0.2-demo.zip),
-  - [metrics-matcher-1.0.2-mini.zip](/releases/metrics-matcher-1.0.2-mini.zip),
+  - [metrics-matcher-1.0.2-demo.zip](/releases/metrics-matcher-1.0.2-demo.zip)
+  - [metrics-matcher-1.0.2-mini.zip](/releases/metrics-matcher-1.0.2-mini.zip)
   - [metrics-matcher-1.0.2-oracle.zip](/releases/metrics-matcher-1.0.2-oracle.zip)
-  - Separate app builds
-  - Optimized app size
+    - Separate app builds
+    - Optimized app size
 
 - **v1.0.1** (2019-03-17) 
   - [metrics-matcher-1.0.1.zip](/releases/metrics-matcher-1.0.1.zip)
@@ -46,10 +46,10 @@ These versions of the application were released and now available for downloadin
   
 Since v1.0.2 build procedure produces different variants of the app.
 
-Latest release contains these:
+Latest release contains these variants of the app:
 
 - **demo** - includes H2 driver, different types of SQL queries and profiles to demonstrate how it works
-- **mini** - minimal without drivers and configs
+- **mini** - minimal version without drivers and configs
 - **oracle** - includes Oracle driver, data source template for Oracle database and dummy metrics profile   
 
 Full list of downloadable files is available at 
@@ -130,7 +130,7 @@ The application most likely should work with any database.
 
 Application works with small portions of data extracted from the database using SQL queries.
 
-**Each query should return metrics - a single value in a single row**.
+**Each query should return metrics - it is a single value in a single row**.
 
 In most cases it is a counter or result of aggregation function.
 
@@ -155,6 +155,8 @@ In the runtime such parameters will be substituted with values specified in the 
 
 Files with SQL queries should be placed into the ***queries*** directory.
 One query per file.
+
+***Data source*** menu items are generated in the app using these labels.
 
 
 ### Metrics profiles
@@ -237,15 +239,8 @@ and for the second as:
 SELECT COUNT(1) FROM users WHERE user_group = 'minecraft'
 ```
 
-## Naming convention
+## SQL metrics tips and tricks
 
-Application follows pretty simple naming convention between file names, metrics and...
- 
-- TODO datasource name
-- TODO query file name, id (without sql), query title
-- TODO variables mapping
-- TODO screenshot, highlight menu, statusbar
-
-## SQL tips and tricks
+Some how to calculate metrics using different SQL dialects.
 
 TODO
