@@ -34,8 +34,8 @@ In order to start using of the application your need to:
 These versions of the application were released and now available for downloading:
 
 - **v1.0.2** (2019-03-24) 
+  - [metrics-matcher-1.0.2-core.zip](/releases/metrics-matcher-1.0.2-core.zip)
   - [metrics-matcher-1.0.2-demo.zip](/releases/metrics-matcher-1.0.2-demo.zip)
-  - [metrics-matcher-1.0.2-mini.zip](/releases/metrics-matcher-1.0.2-mini.zip)
   - [metrics-matcher-1.0.2-oracle.zip](/releases/metrics-matcher-1.0.2-oracle.zip)
     - Separate app builds
     - Optimized app size
@@ -48,8 +48,8 @@ Since v1.0.2 build procedure produces different variants of the app.
 
 Latest release contains these variants of the app:
 
+- **core** - minimal version without drivers and configs
 - **demo** - includes H2 driver, different types of SQL queries and profiles to demonstrate how it works
-- **mini** - minimal version without drivers and configs
 - **oracle** - includes Oracle driver, data source template for Oracle database and dummy metrics profile   
 
 Full list of downloadable files is available at 
