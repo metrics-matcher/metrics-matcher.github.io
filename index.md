@@ -31,16 +31,17 @@ In order to start using of the application your need to:
 
 ## Releases
 
-These versions of the application were released and available for downloading:
+These versions of the application were released and now available for downloading:
 
 - **v1.0.2** (2019-03-24) 
-[demo zip](/releases/metrics-matcher-1.0.2-demo.zip)
-[mini zip](/releases/metrics-matcher-1.0.2-mini.zip)
-[oracle zip](/releases/metrics-matcher-1.0.2-oracle.zip)
+  - [metrics-matcher-1.0.2-demo.zip](/releases/metrics-matcher-1.0.2-demo.zip),
+  - [metrics-matcher-1.0.2-mini.zip](/releases/metrics-matcher-1.0.2-mini.zip),
+  - [metrics-matcher-1.0.2-oracle.zip](/releases/metrics-matcher-1.0.2-oracle.zip)
   - Separate app builds
   - Optimized app size
 
-- **v1.0.1** (2019-03-17) [metrics-matcher-1.0.1.zip](/releases/metrics-matcher-1.0.1.zip)
+- **v1.0.1** (2019-03-17) 
+  - [metrics-matcher-1.0.1.zip](/releases/metrics-matcher-1.0.1.zip)
   - Initial implementation
   
 Since v1.0.2 build procedure produces different variants of the app.
