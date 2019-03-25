@@ -276,7 +276,8 @@ And then declare metrics:
 ### List aggregation
 
 Sometimes it is necessary to match a list of unique values from the database.
-Sounds like multiple values, but again, it could be represented as a **single** value.
+
+Sounds like result contains multiple values, but again, it can be represented as a **single** value.
 
 SQL (Oracle dialect):
 ```sql
