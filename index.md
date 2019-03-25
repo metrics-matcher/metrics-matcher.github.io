@@ -241,6 +241,77 @@ SELECT COUNT(1) FROM users WHERE user_group = 'minecraft'
 
 ## SQL metrics tips and tricks
 
-Some how to calculate metrics using different SQL dialects.
+Aggregate functions are the best for metrics.
+They produce single result based on a data from multiple rows.
 
-TODO
+COUNT, MIN, MAX, SUM, AVG are so trivial and very useful functions.
+
+It seems that you are familiar with these functions if you use this app.
+
+However, there are a few tricks to make the life easier.
+
+### Concatenation
+
+You may want to match several metrics at once, using a single query.
+For example, MIN and MAX age.
+But in terms of the application the query should return a **single value**.
+
+No problem, just concatenate your multiple values into the single one.
+
+Like this (Oracle dialect):
+```sql
+-- min-max-age.sql
+SELECT MIN(age) || ' - ' || MAX(age) FROM users
+```
+
+And then declare metrics:
+```json
+{
+  "metrics": {
+    "min-max-age": "11 - 89"
+  }
+}
+```
+
+### List aggregation
+
+Sometimes it is necessary to match a list of unique values from the database.
+Sounds like multiple values, but again, it could be represented as a **single** value.
+
+SQL (Oracle dialect):
+```sql
+-- user-groups.sql
+SELECT LISTAGG (group_name, '; ') WITHIN GROUP (ORDER BY group_name) 
+FROM (SELECT DISTINCT group_name FROM users)
+```
+
+And the matcher:
+```json
+{
+  "metrics": {
+    "user-groups": "The Bad; The Good; The Ugly"
+  }
+}
+```
+
+### Data checksum
+
+It is a good idea to calculate checksum to control data integrity.
+
+Different databases have different functions to do this.
+
+On Oracle it is possible to calculate something similar to checksum:
+```sql
+-- users-checksum.sql
+SELECT SUM(ORA_HASH(user_id || ';' || user_name)) FROM users
+```
+
+And the matcher:
+```json
+{
+  "metrics": {
+    "users-checksum": 436640800921
+  }
+}
+```
+
