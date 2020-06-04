@@ -14,7 +14,8 @@ This is how it looks on Windows:
 
 ![Metrics matcher screenshot](/images/screenshot.png)
 
-Metrics matcher is a Java-based desktop application. It requires **Java 8** to be installed.
+Metrics matcher is a Java-based desktop application. It requires **Java 8 with JavaFX** to be installed.
+For example it could be [Oracle JDK 8](https://www.oracle.com/java/technologies/javase-jdk8-downloads.html).
 
 It is open and free, licensed under MIT. With sources hosted on the GitHub in the 
 [metrics-matcher](https://github.com/metrics-matcher/metrics-matcher) repository.
@@ -32,6 +33,16 @@ In order to start using of the application your need to:
 ## Releases
 
 These versions of the application were released and now available for downloading:
+
+- **v1.0.3** (2020-06-04) 
+  - [metrics-matcher-1.0.3-core.zip](/releases/metrics-matcher-1.0.3-core.zip)
+  - [metrics-matcher-1.0.3-demo.zip](/releases/metrics-matcher-1.0.3-demo.zip)
+  - [metrics-matcher-1.0.3-mysql.zip](/releases/metrics-matcher-1.0.3-mysql.zip)
+  - [metrics-matcher-1.0.3-oracle.zip](/releases/metrics-matcher-1.0.3-oracle.zip)
+    - Added "Additional result" column to display extra information gathered together with a metrics
+    - SQL queries can be grouped into subdirectories
+    - Option to specify schema in database
+    - Synchronize action shortcut (Ctrl+R)
 
 - **v1.0.2** (2019-03-24) 
   - [metrics-matcher-1.0.2-core.zip](/releases/metrics-matcher-1.0.2-core.zip)
@@ -68,7 +79,7 @@ In theory, the application supports any databases that have JDBC interface.
 Like: PostgreSQL, MySQL, MariaDB, Oracle, H2, etc.
 You just need to provide the appropriate driver (see [Drivers](#drivers) section).
 
-Data sources are defined in the ***configs/datasources.json*** file.
+Data sources are defined in the ***configs/data-sources.json*** file.
 
 Sample file:
 
@@ -85,7 +96,8 @@ Sample file:
     "url": "jdbc:oracle:thin:@//myhost:1521/orcl",
     "username": "me",
     "password": "passwd",
-    "timeout": 60
+    "timeout": 60,
+    "schema": "DEMO"
   }
 ]
 ```
@@ -155,11 +167,19 @@ WHERE user_group = '${groupName}'
 Query may have optional comment (started with `--`) on the first line.
 In the runtime such parameters will be substituted with values specified in the Metrics Profiles.
 
+Since version 1.0.3 it is possible to select extra information together with a metrics, like:
+```sql
+-- Max age in the group ${groupName}
+SELECT MAX(user_age), COUNT(1) AS group_size, AVG(user_age) AS avg_age 
+FROM users
+WHERE user_group = '${groupName}'
+```
+
+In such case a string like "GROUP_SIZE=123; AVG_AGE=25" will be displayed in an "Additional result" column.
+This additional value isn't involved in the Expected/Actual comparison. It is only for display purposes.
+
 Files with SQL queries should be placed into the ***queries*** directory.
-One query per file.
-
-***Data source*** menu items are generated in the app using these labels.
-
+One query per file. Queries can be placed into subdirectories.
 
 ### Metrics profiles
 
@@ -182,7 +202,7 @@ Metrics profiles can be defined in ***metrics-profiles.json***, like this:
   {
     "name": "Diablo gamers",
     "metrics": {
-      "count-of-users": 55
+      "games/count-of-users": 55
     },
     "params": {
       "groupName": "diablo"
@@ -198,6 +218,15 @@ Imagine you have a file ***queries/total-count-of-users.sql***.
 Then `total-count-of-users` (without `.sql`) is  a **Query Id**.
 
 And you expect that this query should return 123 users.
+
+Note that if a SQL is placed into a subdirectory then Query Id should be specified with the subdirectory name as a prefix.
+So if:
+- Subdirectory is "games"
+- and SQL file name is "count-of-users.sql"
+
+Then:
+- Query Id will be "games/count-of-users"
+
 
 Queries can be parameterized.
 
@@ -256,7 +285,7 @@ However, there are a few tricks to make the life easier.
 
 You may want to match several metrics at once, using a single query.
 For example, MIN and MAX age.
-But in terms of the application the query should return a **single value**.
+But in terms of the application the query should return a **single value** as "Actual result".
 
 No problem, just concatenate your multiple values into the single one.
 
